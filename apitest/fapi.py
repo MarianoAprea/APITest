@@ -27,6 +27,10 @@ users_list = [User(id=1, nombre="mariano",apellido="aprea",edad=44),
               User(id=4,nombre="martina",apellido="fifo", edad=22)] 
 
 
+@app.get("/")
+async def localhost():
+    return {"127.0.0.1 Readme if you can!!!"}
+
 @app.get("/users")
 async def users():
     return users_list
@@ -40,7 +44,11 @@ async def user(id:int):
         return {"No se ha encontrado el usuario"}
 
 
-
-@app.post("/users/")
+async def user(id:int):
+    users=filter(lambda user: user.id == id, users_list)
+    try: 
+        return list(users)[0]
+    except:
+        return {"No se ha encontrado el usuario"}
 async def create_user(item: User):
      return item
