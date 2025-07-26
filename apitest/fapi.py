@@ -44,11 +44,20 @@ async def user(id:int):
         return {"No se ha encontrado el usuario"}
 
 
-async def user(id:int):
-    users=filter(lambda user: user.id == id, users_list)
-    try: 
+
+@app.post("/user/")
+async def create_user(user: User):
+    if buscar_user(user.id) is not None:
+        return {"message": "El usuario ya existe"}
+    else:
+        users_list.append(user) 
+        return {"message": "Usuario creado", "user": user.nombre}
+
+
+def buscar_user (id:int) -> Union[User, None]:
+    users = filter(lambda user: user.id == id, users_list)
+    try:
         return list(users)[0]
-    except:
-        return {"No se ha encontrado el usuario"}
-async def create_user(item: User):
-     return item
+    except IndexError:
+        return None
+
