@@ -65,13 +65,7 @@ async def update_user(id: int, user: User):
         return {"message": "El usuario no existe"}
 
 
-def buscar_user (id:int) -> Union[User, None]:
-    users = filter(lambda user: user.id == id, users_list)
-    try:
-        return list(users)[0]
-    except IndexError:
-        return None
-    
+
 
 @app.delete("/user/{id}")
 async def delete_user(id: int):
@@ -82,3 +76,9 @@ async def delete_user(id: int):
     else:
         return {"message": "El usuario no existe"}
 
+def buscar_user (id:int) -> Union[User, None]:
+    users = filter(lambda user: user.id == id, users_list)
+    try:
+        return list(users)[0]
+    except IndexError:
+        return None
