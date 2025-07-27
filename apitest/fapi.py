@@ -54,10 +54,31 @@ async def create_user(user: User):
         return {"message": "Usuario creado", "user": user.nombre}
 
 
+
+@app.put("/user/{id}")
+async def update_user(id: int, user: User):
+    
+    if buscar_user(user.id) is not None:
+        users_list[users_list.index(buscar_user(user.id))] = user
+        return {"message": "Usuario actualizado", "user": user.nombre}
+    else:
+        return {"message": "El usuario no existe"}
+
+
 def buscar_user (id:int) -> Union[User, None]:
     users = filter(lambda user: user.id == id, users_list)
     try:
         return list(users)[0]
     except IndexError:
         return None
+    
+
+@app.delete("/user/{id}")
+async def delete_user(id: int):
+    user = buscar_user(id)
+    if user is not None:
+        users_list.remove(user)
+        return {"message": "Usuario eliminado", "user": user.nombre}
+    else:
+        return {"message": "El usuario no existe"}
 
