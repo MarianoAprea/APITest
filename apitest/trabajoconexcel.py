@@ -12,7 +12,7 @@ def create_excel_file(filename="mi_excel.xlsx"):
     ws['B1'] = "edad"
     ws['A2'] = "Mariano"
     ws['B2'] = 44
-    ws['A3'] = "Mateo"
+    ws['A3'] = "Mateos"
     ws['B3'] = 15
 
     wb.save(filename)
