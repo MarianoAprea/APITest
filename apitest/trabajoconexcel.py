@@ -3,12 +3,12 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font, Alignment
 
 # --- Creating a new Excel file ---
-def create_excel_file(filename="mi_excel2.xlsx"):
+def create_excel_file(filename="pruebaExcel.xlsx"):
     wb = Workbook()  # Create a new workbook
     ws = wb.active   # Get the active worksheet
     ws.title = "Mi Hoja desde python" # Set the sheet title
     
-    # Style header row
+    # Style header rows
     header_font = Font(bold=True, color="EFFFFF")
     header_fill = PatternFill("solid", fgColor="5981BD")
     header_align = Alignment(horizontal="center")
@@ -29,7 +29,7 @@ def create_excel_file(filename="mi_excel2.xlsx"):
     # Write data to cells
     ws['A1'] = "Nombre"
     ws['B1'] = "edad"
-    ws['A2'] = "Mariano"
+    ws['A2'] = "Marianos"
     ws['B2'] = 44
     ws['A3'] = "Mateos"
     ws['B3'] = 15
