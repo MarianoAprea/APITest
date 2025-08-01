@@ -1,12 +1,31 @@
 from openpyxl import Workbook
 from openpyxl import load_workbook
+from openpyxl.styles import PatternFill, Font, Alignment
 
 # --- Creating a new Excel file ---
-def create_excel_file(filename="mi_excel.xlsx"):
+def create_excel_file(filename="mi_excel2.xlsx"):
     wb = Workbook()  # Create a new workbook
     ws = wb.active   # Get the active worksheet
     ws.title = "Mi Hoja desde python" # Set the sheet title
-
+    
+    # Style header row
+    header_font = Font(bold=True, color="EFFFFF")
+    header_fill = PatternFill("solid", fgColor="5981BD")
+    header_align = Alignment(horizontal="center")
+    for cell in ws[1]:
+        cell.font = header_font
+        cell.fill = header_fill
+        cell.alignment = header_align
+   
+   # Style data rows
+    data_font = Font(color="740000")
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=2):
+        for cell in row:
+            cell.font = data_font
+            cell.alignment = Alignment(horizontal="left")
+    
+    
+    
     # Write data to cells
     ws['A1'] = "Nombre"
     ws['B1'] = "edad"
@@ -17,11 +36,6 @@ def create_excel_file(filename="mi_excel.xlsx"):
 
     wb.save(filename)
     print(f"'{filename}' created successfully.")
-
-
-
-
-
 
 
 # --- Reading an existing Excel file ---
@@ -35,8 +49,6 @@ def read_excel_file(filename="mi_excel.xlsx"):
             print(row)
     except FileNotFoundError:
         print(f"Error: '{filename}' not found.")
-
-
 
 
 # --- Modifying an existing Excel file ---
@@ -62,6 +74,6 @@ def modify_excel_file(filename="mi_excel.xlsx"):
 
 if __name__ == "__main__":
     create_excel_file()
-    read_excel_file()
-    modify_excel_file()
-    read_excel_file() # Read again to see modifications
+    #read_excel_file()
+    #modify_excel_file()
+    #read_excel_file() # Read again to see modifications
