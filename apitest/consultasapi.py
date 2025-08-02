@@ -54,7 +54,10 @@ def test_put_some_user_ok ():
    assert response.status_code == 200
    user = response.json()
    assert user["message"] == "Usuario actualizado"
-   #assert user["user"]["id"] == 1
-   #assert user["user"]["nombre"] == "Gabo"
-   #assert user["user"]["apellido"] == "Cizo"
-   #assert user["user"]["edad"] == 29
+
+"""  
+ assert user["id"] == 1
+   assert user["nombre"] == "Gabo"
+   assert user["apellido"] == "Cizo"
+   assert user["edad"] == 29"""
+ 

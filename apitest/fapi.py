@@ -45,6 +45,7 @@ async def user(id:int):
 
 
 
+
 @app.post("/user/")
 async def create_user(user: User):
     if buscar_user(user.id) is not None:
