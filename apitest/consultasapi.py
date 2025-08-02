@@ -41,3 +41,20 @@ def test_delete_some_user_ok ():
    assert response.status_code == 200
    #user = response.json()
    #assert user["message"] == "No se ha encontrado el usuario"
+
+def test_put_some_user_ok ():
+   # Realizar una solicitud PUT para actualizar un usuario
+   data = {
+       "id": 1,
+       "nombre": "Gabo",
+       "apellido": "Cizo",
+       "edad": 29
+   }
+   response = requests.put('http://127.0.0.1:8000/user/1', json=data)
+   assert response.status_code == 200
+   user = response.json()
+   assert user["message"] == "Usuario actualizado"
+   #assert user["user"]["id"] == 1
+   #assert user["user"]["nombre"] == "Gabo"
+   #assert user["user"]["apellido"] == "Cizo"
+   #assert user["user"]["edad"] == 29
