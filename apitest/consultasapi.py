@@ -1,17 +1,5 @@
 import requests
 
-
-
-# Realizar una solicitud POST
-data = {
-  "id": 10,
-  "nombre": "Henry",
-  "apellido": "Costas",
-  "edad": 70
-}
-#response = requests.post('http://127.0.0.1:8000/users', data=data)
-
-
 def test_get_users_ok ():
    # Realizar una solicitud GET a una URL
    response = requests.get('http://127.0.0.1:8000/users')
