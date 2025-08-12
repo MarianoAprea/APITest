@@ -3,6 +3,13 @@ import allure
 
 
 @allure.step("Test GET all users")
+@allure.title("Obtener todos los usuarios")
+@allure.description("Prueba para obtener todos los usuarios")
+@allure.feature("Usuarios")
+@allure.story("Obtener usuarios")
+@allure.severity(allure.severity_level.NORMAL)
+@allure.link("http://127.0.0.1:8000/users")
+@allure.suite("Pruebas de Usuarios")
 def test_get_users_ok ():
    # Realizar una solicitud GET a una URL
    response = requests.get('http://127.0.0.1:8000/users')
